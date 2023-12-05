@@ -9,8 +9,7 @@ def get_weekends(dates: pd.DataFrame)->np.array:
     return dates[dates['day'].dt.weekday >= 5].day.values.astype('datetime64[D]')
 
 def read_dates(name: str)->np.array:
-    df_days = pd.read_csv(name)
-    return df_days['day'].apply(pd.to_datetime, '%m/%d/%Y').values.astype('datetime64[D]')
+    return pd.read_csv(name)['day'].apply(pd.to_datetime, '%m/%d/%Y').values.astype('datetime64[D]')
 
 def get_dates_range(dates: np.array, date1: datetime, date2: datetime)-> np.array:
     return dates[np.logical_and(dates[:] >= date1.date(), dates[:]<=date2.date())]
@@ -31,8 +30,7 @@ class BusCalendar:
         self.bdays = np.array(list(set(bdays['day'].apply(pd.to_datetime, '%m/%d/%Y').values.astype('datetime64[D]')) - ((set(hdays) | set(wedays)) - set(bdays_plus))))
 
     def date_diff(self, date1, date2)->int:
-        bdays = np.busday_count(date1.date(), (date2+timedelta(days=1)).date(), weekmask = '1111111', holidays = self.hdays)
-        return int(bdays)
+        return int(np.busday_count(date1.date(), (date2+timedelta(days=1)).date(), weekmask = '1111111', holidays = self.hdays))
     def get_bdays(self, date1, date2)->np.array:
         return get_dates_range(self.bdays, date1, date2)
     def get_hdays(self, date1, date2)->np.array:
