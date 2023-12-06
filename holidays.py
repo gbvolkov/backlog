@@ -43,15 +43,15 @@ class BusCalendar:
         return self.bdays_plus[self.bdays_plus.between(date1, date2)]
 
 
-cal = BusCalendar()
+#cal = BusCalendar()
 
-cdays = cal.date_diff(datetime(2022,2,20), datetime(2022,3,10))
-nwdays = cal.get_nwdays(datetime(2022,2,20), datetime(2022,3,10))
-bdays_plus = cal.get_bdays_plus(datetime(2022,2,20), datetime(2022,3,10))
-wedays = cal.get_wedays(datetime(2022,2,20), datetime(2022,3,10))
-bdays = cal.get_bdays(datetime(2022,2,20), datetime(2022,3,10))
-print(nwdays)
-print(bdays_plus)
-print(wedays)
-print(bdays)
-print(cdays)
+#cdays = cal.date_diff(datetime(2022,2,20), datetime(2022,3,10))
+#nwdays = cal.get_nwdays(datetime(2022,2,20), datetime(2022,3,10))
+#bdays_plus = cal.get_bdays_plus(datetime(2022,2,20), datetime(2022,3,10))
+#wedays = cal.get_wedays(datetime(2022,2,20), datetime(2022,3,10))
+#bdays = cal.get_bdays(datetime(2022,2,20), datetime(2022,3,10))
+#print(nwdays)
+#print(bdays_plus)
+#print(wedays)
+#print(bdays)
+#print(cdays)
